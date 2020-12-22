@@ -7,10 +7,11 @@
         <groupId>com.pearadmin</groupId>
         <version>1.0.0-RELEASE</version>
     </parent>
+    <!-- 仓 库 地 址 -->
+    <groupId>com.pearadmin</groupId>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>fuyin-video</artifactId>
-
+    <name>福音视频</name>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -20,6 +21,36 @@
             <groupId>com.aliyun.oss</groupId>
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>3.10.2</version>
+        </dependency>
+        <!-- 公用模块 -->
+        <dependency>
+            <groupId>com.pearadmin</groupId>
+            <artifactId>pear-common</artifactId>
+        </dependency>
+        <!-- Web 模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- MyBatis 框架 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- 分页框架 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+        </dependency>
+        <!-- JSON 序列化框架 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <!-- 接口文档 -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
         </dependency>
     </dependencies>
 
