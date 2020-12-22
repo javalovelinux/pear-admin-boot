@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include :: header('登录')"/>
+    <link rel="stylesheet" href="admin/css/other/login.css" />
+</head>
+<!-- 代 码 结 构 -->
+<body background="admin/images/background2.svg">
+<form class="layui-form" action="javascript:void(0);">
+    <div class="layui-form-item">
+        <img class="logo" src="admin/images/logo.png" />
+        <div class="title">ShengJingGame</div>
+        <div class="desc">
+            个 人 爱 好 技 术 实 践 工 具
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <input name="username" type="text" placeholder="账 户 : admin " value="admin" hover class="layui-input"  />
+    </div>
+    <div class="layui-form-item">
+        <input name="password" type="password" placeholder="密 码 : admin " value="admin" hover class="layui-input"  />
+    </div>
+    <div class="layui-form-item">
+        <input placeholder="验证码 : " name="captcha" hover class="code layui-input layui-input-inline"  />
+        <img src="/system/captcha/generate" class="captchaImage" id="captchaImage"/>
+    </div>
+    <div class="layui-form-item">
+        <input type="checkbox" name="" title="记住密码" lay-skin="primary" checked>
+
+        <a href="/reg" class="layui-btn layui-btn-sm">去注册</a>
+    </div>
+
+    <div class="layui-form-item">
+        <button class="pear-btn pear-btn-success login" lay-submit lay-filter="login">
+            登 入
+        </button>
+    </div>
+</form>
+
+<div id="footer" style="text-align:center">
+    蜀ICP备2020035734号-1
+    <a href="https://beian.miit.gov.cn/#/Integrated/index">工信部官网首页</a>
+</div>
+<th:block th:include="include :: footer"/>
+<script>
+    layui.use(['form','jquery','layer'], function() {
+        let form = layui.form;
+        let $ = layui.jquery;
+        let layer = layui.layer;
+
+        form.on('submit(login)', function(data){
+            let loader = layer.load();
+            $(".login").html("<i class='layui-icon layui-anim layui-anim-rotate layui-anim-loop layui-icon-loading' />");
+            $.ajax({
+                url:'/login',
+                data:data.field,
+                type:"post",
+                dataType:'json',
+                success:function(result){
+                    layer.close(loader);
+                    if(result.success){
+                        layer.msg(result.msg,{icon:1,time:600},function(){
+                            location.href = "/index?username="+data.field.username;
+                        })
+                    }else{
+                        layer.msg(result.msg,{icon:2,time:1000},function(){
+                            document.getElementById("captchaImage").src="/system/captcha/generate?"+Math.random();
+                        });
+                    }
+                    $(".login").html("登 入")
+                }
+            });
+            return false;
+        });
+
+        $("#codeImage").click(function(){
+            document.getElementById("captchaImage").src="/system/captcha/generate?"+Math.random();
+        })
+
+        // 定时验证码刷新
+        setInterval(function(){
+            document.getElementById("captchaImage").src="/system/captcha/generate?"+Math.random();
+        },30000)
+
+    })
+</script>
+<!-- Session 过期处理 -->
+<script>
+    if(window!=top){ top.location.href = location.href; }
+</script>
+
+</body>
+</html>
