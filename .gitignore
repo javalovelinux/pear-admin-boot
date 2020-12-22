@@ -1,7 +1,0 @@
-# Project exclude paths
-/pear-common/target/
-/pear-entrance/target/
-/pear-modules/pear-generator/target/
-/pear-modules/pear-process/target/
-/pear-modules/pear-schedule/target/
-/pear-modules/pear-system/target/
