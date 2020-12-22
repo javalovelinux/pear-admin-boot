@@ -22,6 +22,15 @@
     <!-- 依赖管理 -->
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.pearadmin</groupId>-->
+<!--            <artifactId>fuyin-video</artifactId>-->
+<!--        </dependency>-->
+        <dependency>
             <groupId>com.pearadmin</groupId>
             <artifactId>pear-generator</artifactId>
         </dependency>
@@ -117,6 +126,12 @@
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>${boot.admin.client}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.pearadmin</groupId>
+            <artifactId>fuyin-video</artifactId>
+            <version>1.0.0-RELEASE</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- spring cloud end -->
