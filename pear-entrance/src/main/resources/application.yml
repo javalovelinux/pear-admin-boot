@@ -80,6 +80,13 @@ pear:
     windows-path: D:\home\uploads\
     # linux 上传路径
     linux-path: /home/uploads/
+aliyun:
+  oss:
+    upload:
+      endpoint: "https://oss-cn-shenzhen.aliyuncs.com"
+      accessKeyId: "your key"
+      accessKeySecret: "your secret"
+      bucket: "fuyinvideo"
 
 # Page Helper
 pagehelper:
